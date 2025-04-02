@@ -1,63 +1,135 @@
-1. Inicializar um repositório Git e Criar o Projeto Laravel
+Pré-requisitos
+Certifique-se de ter os seguintes softwares instalados na sua máquina:
+
+PHP (versão 8.0 ou superior)
+
+Composer (gerenciador de dependências do PHP)
+
+Node.js (versão 14 ou superior)
+
+NPM (gerenciador de pacotes do Node.js)
+
+Se não tiver essas ferramentas instaladas, consulte a documentação oficial para instalação:
+
+Instalar PHP
+
+Instalar Composer
+
+Instalar Node.js
+
+1. Clonar o Repositório
+Se você ainda não clonou o repositório, faça isso com o seguinte comando:
+
 bash
 Copiar
-# Inicializando o repositório Git
-git init
+git clone https://github.com/BrunoWagler/Atividade_1_MVC.git
+Entre na pasta do projeto:
 
-# Criando um novo projeto Laravel
-composer create-project --prefer-dist laravel/laravel nome-do-projeto
-
-# Entrar no diretório do projeto
-cd nome-do-projeto
-
-# Adicionar os arquivos ao Git
-git add .
-
-# Realizar o primeiro commit
-git commit -m "Inicializar projeto Laravel"
-2. Configurar o Ambiente e Variáveis do Laravel
 bash
 Copiar
-# Copiar o arquivo de exemplo do .env
+cd nome-do-repositorio
+2. Instalar as Dependências do Laravel
+O primeiro passo é instalar as dependências do Laravel utilizando o Composer:
+
+bash
+Copiar
+composer install
+Isso instalará todas as dependências necessárias para o Laravel funcionar corretamente.
+
+3. Configurar o Ambiente
+O Laravel utiliza um arquivo .env para armazenar variáveis de ambiente. Copie o arquivo .env.example para um novo arquivo .env:
+
+bash
+Copiar
 cp .env.example .env
+Abra o arquivo .env e configure as credenciais do banco de dados:
 
-# Gerar a chave de aplicação do Laravel
+env
+Copiar
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nome_do_banco
+DB_USERNAME=usuario
+DB_PASSWORD=senha
+4. Gerar a Chave de Aplicação
+Laravel requer uma chave de aplicação única para funcionar. Para gerar a chave, execute o comando:
+
+bash
+Copiar
 php artisan key:generate
+Isso atualizará o arquivo .env com a chave de aplicação.
 
-# Realizar commit das configurações do .env
-git add .env
-git commit -m "Configurar arquivo .env e gerar chave de aplicação"
-3. Configurar o Banco de Dados (no .env)
+5. Rodar as Migrações do Banco de Dados
+Se o projeto utilizar banco de dados e tiver migrações configuradas, rode o seguinte comando para criar as tabelas:
+
 bash
 Copiar
-# Abrir o arquivo .env e configurar o banco de dados
-# (não é um comando, basta editar o arquivo .env manualmente)
-# Por exemplo, configurar:
-# DB_CONNECTION=mysql
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=nome_do_banco
-# DB_USERNAME=usuario
-# DB_PASSWORD=senha
-
-# Realizar commit após as configurações do banco
-git add .env
-git commit -m "Configurar conexão com o banco de dados"
-4. Realizar Migrações do Banco de Dados
-bash
-Copiar
-# Rodar as migrações para criar as tabelas
 php artisan migrate
+6. Instalar as Dependências do Tailwind CSS
+6.1. Instalar as Dependências com NPM
+Instale as dependências do Tailwind CSS e outras necessárias para a compilação:
 
-# Realizar commit (caso necessário) das migrações ou outras mudanças
-git add .
-git commit -m "Rodar migrações do banco de dados"
-5. Iniciar o Servidor de Desenvolvimento
 bash
 Copiar
-# Rodar o servidor Laravel localmente
-php artisan serve
+npm install -D tailwindcss postcss autoprefixer
+6.2. Inicializar o Tailwind CSS
+Agora, inicialize a configuração do Tailwind CSS com o comando:
 
-# Realizar commit se houver qualquer alteração de configuração
-git add .
-git commit -m "Iniciar servidor Laravel
+bash
+Copiar
+npx tailwindcss init
+Isso criará um arquivo chamado tailwind.config.js.
+
+6.3. Criar o Arquivo CSS
+Crie o arquivo resources/css/app.css (se ainda não existir) e adicione as diretivas do Tailwind:
+
+bash
+Copiar
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+6.4. Configurar o PostCSS
+Crie o arquivo postcss.config.js na raiz do projeto com a seguinte configuração:
+
+javascript
+Copiar
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+6.5. Configurar o Webpack
+Se você estiver usando o Laravel Mix (gerenciador de ativos do Laravel), abra o arquivo webpack.mix.js e adicione a seguinte configuração:
+
+javascript
+Copiar
+let mix = require('laravel-mix');
+
+mix.postCss('resources/css/app.css', 'public/css', [
+    require('tailwindcss'),
+]);
+7. Compilar o CSS com o Tailwind
+Agora que o Tailwind está configurado, compile o CSS usando o comando:
+
+bash
+Copiar
+npm run dev
+Se você deseja compilar o CSS para produção, utilize:
+
+bash
+Copiar
+npm run prod
+Isso criará o arquivo CSS final em public/css/app.css.
+
+8. Iniciar o Servidor Local
+Agora, tudo está pronto para rodar o servidor de desenvolvimento do Laravel. Execute o seguinte comando:
+
+bash
+Copiar
+php artisan serve
+O servidor estará disponível em http://localhost:8000.
+
+9. Acessar a Aplicação
+Abra o navegador e vá até o endereço http://localhost:8000 para ver a aplicação em execução. O CSS do Tailwind deve ser carregado corretamente, aplicando as estilizações no layout da sua aplicação.
