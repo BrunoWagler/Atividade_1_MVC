@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class TurmasModel extends Model
 {
-    protected $fillable = [
-       'NumeroDaTurma',
-       'Semestre',
-       'Período'
+
+    protected $table = 'turmals';
+
+    protected $fillable= [
+        'numero_turma',
+        'semestre',
+        'periodo'
     ];
 }
+

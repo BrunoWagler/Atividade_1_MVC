@@ -17,7 +17,7 @@
       Mostrar Alunos
     </a>
   
-    <a href="" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300 mb-4">
+    <a href="{{route('turmas.turmas')}}" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300 mb-4">
       Mostrar Classes
     </a>
   </div>

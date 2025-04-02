@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\TurmasModel;
 use Illuminate\Http\Request;
 
+
+
 class TurmasController extends Controller
 {
     /**
@@ -12,7 +14,9 @@ class TurmasController extends Controller
      */
     public function index()
     {
-        //
+        $turmas = TurmasModel::all();
+    
+        return view('turmas.turmas', compact('turmas'));
     }
 
     /**

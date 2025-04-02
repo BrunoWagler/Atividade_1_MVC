@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EstudantesModel;
+
 use Illuminate\Http\Request;
 
 class EstudantesController extends Controller
@@ -12,7 +13,7 @@ class EstudantesController extends Controller
      */
     public function index()
     {
-        //
+        return view('alunos.estudantes');
     }
 
     /**
