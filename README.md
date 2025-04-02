@@ -1,28 +1,28 @@
-Pré-requisitos
+# Instruções para Executar o Projeto
+
+Este projeto utiliza o **Laravel** como framework PHP e o **Tailwind CSS** para estilização. Abaixo estão as etapas para configurar e rodar o projeto localmente.
+
+## Pré-requisitos
+
 Certifique-se de ter os seguintes softwares instalados na sua máquina:
 
-PHP (versão 8.0 ou superior)
-
-Composer (gerenciador de dependências do PHP)
-
-Node.js (versão 14 ou superior)
-
-NPM (gerenciador de pacotes do Node.js)
+- **PHP** (versão 8.0 ou superior)
+- **Composer** (gerenciador de dependências do PHP)
+- **Node.js** (versão 14 ou superior)
+- **NPM** (gerenciador de pacotes do Node.js)
 
 Se não tiver essas ferramentas instaladas, consulte a documentação oficial para instalação:
 
-Instalar PHP
+- [Instalar PHP](https://www.php.net/manual/pt_BR/install.php)
+- [Instalar Composer](https://getcomposer.org/doc/00-intro.md)
+- [Instalar Node.js](https://nodejs.org/)
 
-Instalar Composer
+## 1. Clonar o Repositório
 
-Instalar Node.js
-
-1. Clonar o Repositório
 Se você ainda não clonou o repositório, faça isso com o seguinte comando:
 
-bash
-Copiar
-git clone https://github.com/BrunoWagler/Atividade_1_MVC.git
+```bash
+git clone https://github.com/seu-usuario/nome-do-repositorio.git
 Entre na pasta do projeto:
 
 bash
@@ -84,7 +84,7 @@ Isso criará um arquivo chamado tailwind.config.js.
 6.3. Criar o Arquivo CSS
 Crie o arquivo resources/css/app.css (se ainda não existir) e adicione as diretivas do Tailwind:
 
-bash
+css
 Copiar
 @tailwind base;
 @tailwind components;
@@ -133,3 +133,16 @@ O servidor estará disponível em http://localhost:8000.
 
 9. Acessar a Aplicação
 Abra o navegador e vá até o endereço http://localhost:8000 para ver a aplicação em execução. O CSS do Tailwind deve ser carregado corretamente, aplicando as estilizações no layout da sua aplicação.
+
+Comandos Importantes
+Rodar o servidor Laravel: php artisan serve
+
+Rodar as migrações do banco de dados: php artisan migrate
+
+Instalar as dependências do Laravel: composer install
+
+Instalar as dependências do Tailwind: npm install
+
+Compilar o CSS com Tailwind: npm run dev ou npm run prod
+
+Contribuindo
