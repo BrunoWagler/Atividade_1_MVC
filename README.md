@@ -22,12 +22,13 @@ Se não tiver essas ferramentas instaladas, consulte a documentação oficial pa
 Se você ainda não clonou o repositório, faça isso com o seguinte comando:
 
 ```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/BrunoWagler/Atividade_1_MVC.git
 Entre na pasta do projeto:
 
 bash
 Copiar
 cd nome-do-repositorio
+
 2. Instalar as Dependências do Laravel
 O primeiro passo é instalar as dependências do Laravel utilizando o Composer:
 
@@ -52,6 +53,7 @@ DB_PORT=3306
 DB_DATABASE=nome_do_banco
 DB_USERNAME=usuario
 DB_PASSWORD=senha
+
 4. Gerar a Chave de Aplicação
 Laravel requer uma chave de aplicação única para funcionar. Para gerar a chave, execute o comando:
 
@@ -67,12 +69,14 @@ bash
 Copiar
 php artisan migrate
 6. Instalar as Dependências do Tailwind CSS
+
 6.1. Instalar as Dependências com NPM
 Instale as dependências do Tailwind CSS e outras necessárias para a compilação:
 
 bash
 Copiar
 npm install -D tailwindcss postcss autoprefixer
+
 6.2. Inicializar o Tailwind CSS
 Agora, inicialize a configuração do Tailwind CSS com o comando:
 
@@ -110,6 +114,7 @@ let mix = require('laravel-mix');
 mix.postCss('resources/css/app.css', 'public/css', [
     require('tailwindcss'),
 ]);
+
 7. Compilar o CSS com o Tailwind
 Agora que o Tailwind está configurado, compile o CSS usando o comando:
 
