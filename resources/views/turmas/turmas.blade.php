@@ -34,7 +34,7 @@
                                     Alterar
                                 </a>
 
-                                <form action="" method="POST" onsubmit="return confirm('Tem certeza que deseja remover esta turma?');">
+                                <form action="" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" 
