@@ -12,8 +12,12 @@ class EstudantesController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('alunos.estudantes');
+    {   
+
+
+        $estudantes = EstudantesModel::all();
+    
+        return view('alunos.estudantes', compact('estudantes'));
     }
 
     /**
