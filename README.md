@@ -27,7 +27,7 @@ Entre na pasta do projeto:
 
 bash
 Copiar
-cd nome-do-repositorio
+cd Atividade_1_MVC
 
 2. Instalar as Dependências do Laravel
 O primeiro passo é instalar as dependências do Laravel utilizando o Composer:
