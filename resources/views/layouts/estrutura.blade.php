@@ -17,11 +17,8 @@
 
   <footer class="py-3 mt-8 border-t border-gray-300 fixed-bottom bg-white w-full">
     <ul class="flex justify-center space-x-6 pb-3 mb-3 border-b">
-      <li><a href="index" class="text-gray-500 hover:text-gray-800">Home</a></li>
-      <li><a href="#" class="text-gray-500 hover:text-gray-800">Features</a></li>
-      <li><a href="#" class="text-gray-500 hover:text-gray-800">Pricing</a></li>
-      <li><a href="#" class="text-gray-500 hover:text-gray-800">FAQs</a></li>
-      <li><a href="#" class="text-gray-500 hover:text-gray-800">About</a></li>
+      <li><a href="/" class="text-gray-500 hover:text-gray-800">Home</a></li>
+
     </ul>
     <p class="text-center text-gray-500">&copy; 2024 Bruno, Wagler</p>
   </footer>
