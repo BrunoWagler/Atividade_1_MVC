@@ -61,9 +61,9 @@ Abra o arquivo `.env` e configure as credenciais do banco de dados:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nome_do_banco
-DB_USERNAME=usuario
-DB_PASSWORD=senha
+DB_DATABASE=brunodb
+DB_USERNAME=bruno
+DB_PASSWORD=
 ```
 
 ### 4. Gerar a Chave de Aplicação
