@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="max-w-lg w-full mx-auto p-6 bg-white rounded-lg shadow-lg">
     <div class="text-center">
         <h1 class="text-4xl font-semibold text-gray-700 mb-4">Bem-vindo!</h1>
