@@ -6,7 +6,18 @@
     <title>Estrutura</title>
     @vite('resources/css/app.css')
 </head>
+
+
+
+
 <body class="bg-gray-100 text-gray-900">
+
+<div class="black sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <a href="/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+            <a href="{{ route('alunos.estudantes') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Alunos</a>
+            <a href="{{ route('turmas.turmas') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Turmas</a>
+    </div>
 
 <div class="ml-64 p-4">
   @yield('content') 
