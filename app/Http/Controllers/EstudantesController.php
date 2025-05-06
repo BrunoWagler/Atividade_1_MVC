@@ -21,45 +21,75 @@ class EstudantesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cpf' => 'required|unique:estudantes_models',
+            'cpf' => 'required|unique:estudantes',
             'nome' => 'required|max:255',
             'data_nascimento' => 'required|date',
         ]);
-
+    
         EstudantesModel::create($request->all());
-
+    
         return redirect()->route('estudantes.index')->with('success', 'Estudante criado com sucesso!');
     }
+    
 
-    public function show(EstudantesModel $estudantesModel)
+    public function show($id)
     {
-        return view('alunos.show', compact('estudantesModel'));
+        $estudante = EstudantesModel::findOrFail($id);
+    
+       
+        return view('alunos.show', compact('estudante'));
     }
-
-    public function edit(EstudantesModel $estudantesModel)
+    
+    public function edit($id)
     {
-        return view('alunos.edit', compact('estudantesModel'));
+        // Encontra o estudante pelo ID
+        $estudante = EstudantesModel::find($id);
+    
+        if (!$estudante) {
+            // Caso o estudante não seja encontrado, redireciona com mensagem de erro
+            return redirect()->route('alunos.index')->with('error', 'Estudante não encontrado.');
+        }
+    
+        // Exibe a view de edição passando os dados do estudante
+        return view('alunos.edit', compact('estudante'));
     }
-
-    public function update(Request $request, EstudantesModel $estudantesModel)
+    
+    public function update(Request $request, $id)
     {
+        // Validação dos dados do formulário de edição
         $request->validate([
-            'cpf' => 'required|unique:estudantes_models,cpf,' . $estudantesModel->id,
+            'cpf' => 'required|unique:estudantes,cpf,' . $id,  // Exclui o próprio CPF do estudante da validação
             'nome' => 'required|max:255',
             'data_nascimento' => 'required|date',
         ]);
-
-        $estudantesModel->update($request->all());
-
-        return redirect()->route('estudantes.index')->with('success', 'Estudante atualizado com sucesso!');
+    
+        // Encontra o estudante pelo ID
+        $estudante = EstudantesModel::find($id);
+    
+        if (!$estudante) {
+            return redirect()->route('alunos.index')->with('error', 'Estudante não encontrado.');
+        }
+    
+        // Atualiza os dados do estudante
+        $estudante->update($request->all());
+    
+        // Redireciona para a lista de estudantes com uma mensagem de sucesso
+        return redirect()->route('alunos.index')->with('success', 'Estudante atualizado com sucesso!');
     }
-
-    public function destroy(EstudantesModel $estudantesModel)
+    
+    public function destroy($id)
     {
-        $estudantesModel->delete();
-
-        return redirect()->route('alunos.estudantes')->with('success', 'Estudante deletado com sucesso!');
+        $estudante = EstudantesModel::find($id); // Localiza o estudante pelo ID
+    
+        if ($estudante) {
+            $estudante->delete(); // Exclui o estudante
+            return redirect()->route('alunos.index')->with('success', 'Estudante excluído com sucesso!');
+        } else {
+            return redirect()->route('alunos.index')->with('error', 'Estudante não encontrado.');
+        }
     }
+    
+    
 }
 
 ?>

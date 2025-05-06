@@ -5,17 +5,8 @@
         <h2 class="text-2xl font-bold mb-6 text-gray-800">Editar Estudante</h2>
 
         {{-- Exibição de erros --}}
-        @if ($errors->any())
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                <ul class="list-disc pl-5">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
-        <form action="{{ route('estudantes.update', $estudante->id) }}" method="POST">
+        <form action="{{ route('alunos.update', $estudante->id) }}" method="POST">
             @csrf
             @method('PUT') {{-- Método PUT para edição --}}
 
@@ -40,23 +31,9 @@
                        class="mt-1 block w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:border-blue-300" required>
             </div>
 
-            {{-- Turmal --}}
-            <div class="mb-6">
-                <label for="turmal_id" class="block text-sm font-medium text-gray-700">Turmal</label>
-                <select name="turmal_id" id="turmal_id"
-                        class="mt-1 block w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:border-blue-300" required>
-                    <option value="">Selecione uma turmal</option>
-                    @foreach ($turmals as $turmal)
-                        <option value="{{ $turmal->id }}" {{ old('turmal_id', $estudante->turmal_id) == $turmal->id ? 'selected' : '' }}>
-                            Turma {{ $turmal->numero_turma }} - {{ $turmal->periodo }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-
             {{-- Botões --}}
             <div class="flex justify-between">
-                <a href="{{ route('alunos.estudantes') }}"
+                <a href="{{ route('alunos.index') }}"
                    class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400">
                     Voltar
                 </a>

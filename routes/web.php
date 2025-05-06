@@ -1,9 +1,16 @@
 <?php
 
+
 use App\Http\Controllers\EstudantesController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('estudantes')->name('estudantes.')->group(function() {
+Route::get("/", 
+function () {
+    return view("index");
+}
+);
+
+Route::prefix('alunos')->name('alunos.')->group(function() {
     Route::get('/', [EstudantesController::class, 'index'])->name('index');
     Route::get('/create', [EstudantesController::class, 'create'])->name('create');
     Route::post('/', [EstudantesController::class, 'store'])->name('store');

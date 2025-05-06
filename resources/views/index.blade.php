@@ -9,11 +9,11 @@
     </div>
     
     <div class="flex flex-wrap gap-4 justify-center">
-        <a href="{{ route('alunos.estudantes') }}" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 w-full sm:w-auto text-center mb-4">
+        <a href="{{ route('alunos.index') }}" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 w-full sm:w-auto text-center mb-4">
             Mostrar Alunos
         </a>
         
-        <a href="{{ route('turmas.turmas') }}" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 w-full sm:w-auto text-center mb-4">
+        <a href="{{ route('turmas.index') }}" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300 w-full sm:w-auto text-center mb-4">
             Mostrar Classes
         </a>
     </div>
