@@ -5,65 +5,64 @@ namespace App\Http\Controllers;
 use App\Models\TurmasModel;
 use Illuminate\Http\Request;
 
-
-
 class TurmasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $turmas = TurmasModel::all();
-    
-        return view('turmas.turmas', compact('turmas'));
+        return view('turmas.index', compact('turmas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('turmas.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'numero_turma' => 'required|integer',
+            'semestre' => 'required|integer',
+            'periodo' => 'required|string|max:255',
+        ]);
+
+        TurmasModel::create($request->all());
+
+        return redirect()->route('turmas.turmas')->with('success', 'Turma criada com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(TurmasModel $turmasModel)
+    public function show($id)
     {
-        //
+        $turma = TurmasModel::findOrFail($id);
+        return view('turmas.show', compact('turma'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TurmasModel $turmasModel)
+    public function edit($id)
     {
-        //
+        $turma = TurmasModel::findOrFail($id);
+        return view('turmas.edit', compact('turma'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, TurmasModel $turmasModel)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'numero_turma' => 'required|integer',
+            'semestre' => 'required|integer',
+            'periodo' => 'required|string|max:255',
+        ]);
+
+        $turma = TurmasModel::findOrFail($id);
+        $turma->update($request->all());
+
+        return redirect()->route('turmas.turmas')->with('success', 'Turma atualizada com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(TurmasModel $turmasModel)
+    public function destroy($id)
     {
-        //
+        $turma = TurmasModel::findOrFail($id);
+        $turma->delete();
+
+        return redirect()->route('turmas.turmas')->with('success', 'Turma removida com sucesso!');
     }
 }
+?>
